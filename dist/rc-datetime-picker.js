@@ -2,7 +2,7 @@
  * rc-datetime-picker v1.6.1
  * https://github.com/AllenWooooo/rc-datetime-picker
  *
- * (c) 2018 Allen Wu
+ * (c) 2020 Allen Wu
  * License: MIT
  */
 (function (global, factory) {
@@ -18,9 +18,10 @@ moment = moment && moment.hasOwnProperty('default') ? moment['default'] : moment
 ReactSlider = ReactSlider && ReactSlider.hasOwnProperty('default') ? ReactSlider['default'] : ReactSlider;
 var ReactDOM__default = 'default' in ReactDOM ? ReactDOM['default'] : ReactDOM;
 
-var WEEKS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-var MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-var DAY_FORMAT = 'MMMM, YYYY';
+// export const WEEKS = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var WEEKS = ['S', 'M', 'T', 'W', 'T', 'F', 'S'];
+var MONTHS = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+var DAY_FORMAT = 'MMMM YYYY';
 var CONFIRM_BUTTON_TEXT = 'Confirm';
 var START_DATE_TEXT = 'Start Date:';
 var END_DATE_TEXT = 'End Date:';
@@ -129,6 +130,8 @@ var possibleConstructorReturn = function (self, call) {
 
   return call && (typeof call === "object" || typeof call === "function") ? call : self;
 };
+
+// import icon_left from 'statics/arrow_previous.svg';
 
 var Day = function (_Component) {
   inherits(Day, _Component);
@@ -245,7 +248,11 @@ var Day = function (_Component) {
           key: day,
           className: className,
           onClick: _this.select.bind(_this, day, isSelected, isDisabled, isPrevMonth, isNextMonth) },
-        day
+        React__default.createElement(
+          'span',
+          null,
+          day
+        )
       );
     };
 
@@ -286,11 +293,20 @@ var Day = function (_Component) {
         { className: 'calendar-days', style: style },
         React__default.createElement(
           'div',
+          { className: 'calendar-title' },
+          'Please, select date'
+        ),
+        React__default.createElement(
+          'div',
           { className: 'calendar-nav' },
           React__default.createElement(
             'button',
             { type: 'button', className: 'prev-month', onClick: this.changeMonth.bind(this, 'prev') },
-            React__default.createElement('i', { className: 'fa fa-angle-left' })
+            React__default.createElement(
+              'span',
+              { className: 'direction-arrow' },
+              ' \u2190'
+            )
           ),
           React__default.createElement(
             'span',
@@ -300,7 +316,11 @@ var Day = function (_Component) {
           React__default.createElement(
             'button',
             { type: 'button', className: 'next-month', onClick: this.changeMonth.bind(this, 'next') },
-            React__default.createElement('i', { className: 'fa fa-angle-right' })
+            React__default.createElement(
+              'span',
+              { className: 'direction-arrow' },
+              ' \u2192'
+            )
           )
         ),
         React__default.createElement(
@@ -465,6 +485,11 @@ var Month = function (_Component) {
       return React__default.createElement(
         'div',
         { className: 'calendar-months', style: style },
+        React__default.createElement(
+          'div',
+          { className: 'calendar-title' },
+          'Please, select month'
+        ),
         React__default.createElement(
           'div',
           { className: 'calendar-nav' },
@@ -632,6 +657,11 @@ var Year = function (_Component) {
       return React__default.createElement(
         'div',
         { className: 'calendar-years', style: style },
+        React__default.createElement(
+          'div',
+          { className: 'calendar-title' },
+          'Please, select year'
+        ),
         React__default.createElement(
           'div',
           { className: 'calendar-nav' },
@@ -1108,6 +1138,22 @@ var Picker = function (_Component) {
   }]);
   return Picker;
 }(React.Component);
+
+function PreConfigDateTimePicker(_ref) {
+  var moment$$1 = _ref.moment,
+      handleChange = _ref.handleChange;
+
+  return React__default.createElement(Picker, {
+    moment: moment$$1,
+    onChange: handleChange,
+    weeks: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    dayFormat: 'MMMM YYYY',
+    minDate: moment$$1().add(1, 'days'),
+    closeOnSelectDay: true,
+    showTimePicker: false
+  });
+}
 
 var Range = function (_Component) {
   inherits(Range, _Component);
@@ -1951,6 +1997,7 @@ var RangeTrigger = function (_Component) {
 }(React.Component);
 
 exports.DatetimePicker = Picker;
+exports.PreConfigDateTimePicker = PreConfigDateTimePicker;
 exports.DatetimeRangePicker = Range;
 exports.DatetimePickerTrigger = Trigger;
 exports.DatetimeRangePickerTrigger = RangeTrigger;

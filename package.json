@@ -1,7 +1,7 @@
 {
-  "name": "rc-datetime-picker",
-  "version": "1.6.1",
-  "description": "React datetime picker by momentjs",
+  "name": "react-date-time-picker",
+  "version": "1.0.0",
+  "description": "React date time picker by momentjs",
   "main": "dist/rc-datetime-picker.cjs.js",
   "keywords": [
     "react",
@@ -22,7 +22,7 @@
     "type": "git",
     "url": "git+https://github.com/AllenWooooo/rc-datetime-picker.git"
   },
-  "author": "Allen Wu <mangong33@gmail.com>",
+  "author": "Hung Pham",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/AllenWooooo/rc-datetime-picker/issues"
@@ -48,6 +48,7 @@
     "eslint": "^4.16.0",
     "eslint-loader": "^1.9.0",
     "eslint-plugin-react": "^7.5.1",
+    "file-loader": "^6.0.0",
     "jest-cli": "^22.1.4",
     "less": "^2.7.3",
     "less-loader": "^4.0.5",

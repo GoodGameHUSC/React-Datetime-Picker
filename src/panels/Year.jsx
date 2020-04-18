@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 import classNames from 'classnames/bind';
 
-import {chunk, range} from '../utils';
+import { chunk, range } from '../utils';
 
 
 class Year extends Component {
@@ -44,21 +44,21 @@ class Year extends Component {
     const now = moment();
     const _moment = this.state.moment;
     const firstYear = Math.floor(_moment.year() / 10) * 10;
-    const {maxDate, minDate, selected, range, rangeAt, dateLimit} = this.props;
+    const { maxDate, minDate, selected, range, rangeAt, dateLimit } = this.props;
     const currentYear = _moment.clone().year(year);
-    const start = selected && range 
-      ? (selected.start ? currentYear.isSame(selected.start, 'year') : false) 
-      : false; 
-    const end = selected && range
-      ? (selected.end ? currentYear.isSame(selected.end, 'year') : false) 
-      : false; 
-    const between = selected && range 
-      ? (selected.start && selected.end 
-        ? currentYear.isBetween(selected.start, selected.end, 'year') 
-        : false) 
+    const start = selected && range
+      ? (selected.start ? currentYear.isSame(selected.start, 'year') : false)
       : false;
-    const isSelected = selected 
-      ? range 
+    const end = selected && range
+      ? (selected.end ? currentYear.isSame(selected.end, 'year') : false)
+      : false;
+    const between = selected && range
+      ? (selected.start && selected.end
+        ? currentYear.isBetween(selected.start, selected.end, 'year')
+        : false)
+      : false;
+    const isSelected = selected
+      ? range
         ? selected[rangeAt] ? selected[rangeAt].year() === year : false
         : selected.year() === year
       : false;
@@ -115,19 +115,20 @@ class Year extends Component {
 
   render() {
     const _moment = this.state.moment;
-    const {style} = this.props;
+    const { style } = this.props;
     const firstYear = Math.floor(_moment.year() / 10) * 10;
     const years = range(firstYear - 1, firstYear + 11);
 
     return (
       <div className="calendar-years" style={style}>
+        <div className="calendar-title">Please, select year</div>
         <div className="calendar-nav">
           <button type="button" className="prev-month" onClick={this.changePeriod.bind(this, 'prev')}>
-            <i className="fa fa-angle-left"/>
+            <i className="fa fa-angle-left" />
           </button>
           <span className="current-date disabled">{firstYear} - {firstYear + 9}</span>
           <button type="button" className="next-month" onClick={this.changePeriod.bind(this, 'next')}>
-            <i className="fa fa-angle-right"/>
+            <i className="fa fa-angle-right" />
           </button>
         </div>
         <table>

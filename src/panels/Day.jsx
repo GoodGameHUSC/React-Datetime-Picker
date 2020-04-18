@@ -1,10 +1,11 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import moment from 'moment';
 import classNames from 'classnames/bind';
 
-import {WEEKS, DAY_FORMAT} from '../constants';
-import {range as arrayRange, chunk} from '../utils';
+import { WEEKS, DAY_FORMAT } from '../constants';
+import { range as arrayRange, chunk } from '../utils';
 
+// import icon_left from 'statics/arrow_previous.svg';
 
 class Day extends Component {
   constructor(props) {
@@ -30,14 +31,14 @@ class Day extends Component {
 
   select = (day, isSelected, isDisabled, isPrevMonth, isNextMonth) => {
     if (isDisabled) return;
-    const {range, onSelect} = this.props;
+    const { range, onSelect } = this.props;
     const _moment = this.state.moment.clone();
-    
+
     if (isPrevMonth) _moment.subtract(1, 'month');
     if (isNextMonth) _moment.add(1, 'month');
 
     _moment.date(day);
-    
+
     this.setState({
       moment: range ? this.state.moment : _moment
     });
@@ -51,30 +52,30 @@ class Day extends Component {
   }
 
   _renderDay = (week, day) => {
-    const {maxDate, minDate, range, rangeAt, selected, dateLimit} = this.props;
+    const { maxDate, minDate, range, rangeAt, selected, dateLimit } = this.props;
     const now = moment();
     const _moment = this.state.moment;
     const isPrevMonth = week === 0 && day > 7;
     const isNextMonth = week >= 4 && day <= 14;
-    const month = isNextMonth 
-      ? _moment.clone().add(1, 'month') 
-      : isPrevMonth 
+    const month = isNextMonth
+      ? _moment.clone().add(1, 'month')
+      : isPrevMonth
         ? _moment.clone().subtract(1, 'month')
         : _moment.clone();
     const currentDay = month.clone().date(day);
-    const start = selected && range 
-      ? (selected.start ? currentDay.isSame(selected.start, 'day') : false) 
-      : false; 
-    const end = selected && range
-      ? (selected.end ? currentDay.isSame(selected.end, 'day') : false) 
-      : false; 
-    const between = selected && range 
-      ? (selected.start && selected.end 
-        ? currentDay.isBetween(selected.start, selected.end, 'day') 
-        : false) 
+    const start = selected && range
+      ? (selected.start ? currentDay.isSame(selected.start, 'day') : false)
       : false;
-    const isSelected = selected 
-      ? range 
+    const end = selected && range
+      ? (selected.end ? currentDay.isSame(selected.end, 'day') : false)
+      : false;
+    const between = selected && range
+      ? (selected.start && selected.end
+        ? currentDay.isBetween(selected.start, selected.end, 'day')
+        : false)
+      : false;
+    const isSelected = selected
+      ? range
         ? (rangeAt === 'start' && start || rangeAt === 'end' && end)
         : currentDay.isSame(selected, 'day')
       : false;
@@ -125,17 +126,19 @@ class Day extends Component {
     });
 
     return (
-      <td 
-        key={day} 
-        className={className} 
+      <td
+        key={day}
+        className={className}
         onClick={this.select.bind(this, day, isSelected, isDisabled, isPrevMonth, isNextMonth)}>
-        {day}
+        <span>
+          {day}
+        </span>
       </td>
     );
   }
 
   render() {
-    const {weeks = WEEKS, dayFormat = DAY_FORMAT, style, changePanel} = this.props;
+    const { weeks = WEEKS, dayFormat = DAY_FORMAT, style, changePanel } = this.props;
     const _moment = this.state.moment;
     const firstDay = _moment.clone().date(1).day();
     const endOfThisMonth = _moment.clone().endOf('month').date();
@@ -148,13 +151,15 @@ class Day extends Component {
 
     return (
       <div className="calendar-days" style={style}>
+        <div className="calendar-title">Please, select date</div>
         <div className="calendar-nav">
           <button type="button" className="prev-month" onClick={this.changeMonth.bind(this, 'prev')}>
-            <i className="fa fa-angle-left"/>
+            {/* <i className="fa fa-arrow-right" /> */}
+            <span className="direction-arrow">	&larr;</span>
           </button>
           <span className="current-date" onClick={changePanel.bind(this, 'month', _moment)}>{_moment.format(dayFormat)}</span>
           <button type="button" className="next-month" onClick={this.changeMonth.bind(this, 'next')}>
-            <i className="fa fa-angle-right"/>
+            <span className="direction-arrow"> &rarr;</span>
           </button>
         </div>
         <table>

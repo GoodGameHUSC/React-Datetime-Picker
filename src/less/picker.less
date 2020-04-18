@@ -3,25 +3,30 @@
 }
 
 .datetime-picker {
-  position: relative;
-  border: 1px solid #dbdbdb;
-  background-color: #fff;
-  border-radius: 4px;
-  font-family: Tahoma, sans-serif;
-  font-size: 14px;
-  color: #4a4a4a;
-  width: 250px;
-  box-sizing: content-box;
-  z-index: 100;
+    position: relative;
+    background-color: #fff;
+    font-family: Tahoma, sans-serif;
+    font-size: 13px;
+    color: #1B559B;
+    width: 400px;
+    box-sizing: content-box;
+    z-index: 100;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+    border-radius: 10px;
+    height: 320px;
 
   .calendar {
 
+    .calendar-title{
+      padding: 10px 10px 0px 22px;
+      text-align: left;
+    }
     .calendar-nav {
       display: flex;
       justify-content: space-between;
-      border-bottom: 1px solid #efefef;
+      // border-bottom: 1px solid #efefef;
       min-height: 32px;
-      padding: 4px;
+      padding: 4px 15px;
 
       button {
         background: none;
@@ -36,9 +41,7 @@
           font-size: 18px;
         }
 
-        &:hover {
-          background-color: #f0f0f0;
-        }
+       
       }
 
       .current-date {
@@ -48,9 +51,13 @@
         border-radius: 4px;
         padding: 0 8px;
         cursor: pointer;
-
+        font-size: 15px;
+         border: 1px solid transparent;
         &:hover {
-          background-color: #f0f0f0;
+           
+            background-color: #3b89ef;
+            color: white;
+            border-radius: 6px;
         }
 
         &.disabled {
@@ -61,15 +68,19 @@
 
     table {
       display: block;
-      margin: 4px;
+      margin: 10px 15px 20px;
 
       th, td {
         padding: 0;
       }
 
       thead {
-        display: block;
-        margin: 8px 0 3px;
+          display: block;
+          margin: 0px -15px;
+          border-bottom: 1px solid;
+          padding: 0px 15px 10px;
+          border-color: #E9EEF5;
+
 
         tr {
           display: flex;
@@ -77,21 +88,20 @@
         }
 
         th {
-          color: #FF9A19;
+          color: #7699C3;
           display: flex;
           align-items: center;
           justify-content: center;
           flex: 1;
           text-align: center;
           text-transform: uppercase;
-          font-size: .8em;
           font-weight: 400;
         }
       }
 
       tbody {
         display: block;
-
+        margin-top: 5px;
         tr {
           display: flex;
           flex-wrap: wrap;
@@ -104,17 +114,34 @@
             border-radius: 4px;
             cursor: pointer;
 
-            &:hover {
-              background-color: #f0f0f0;
+            > span{
+              display: inline-block;
+              height: 30px;
+              line-height: 24px;
+              width: 30px;
+              border: 2px solid transparent;
+              border-radius: 50%;
+              text-align: center;
+              font-size: 12px;
+
+              &:hover{
+                  border-color: #a5c8ec;
+                  background-color: #a5c8ec;
+                  color: white;
+              }
             }
+
+            // &:hover {
+            //   background-color: #f0f0f0;
+            // }
 
             &.prev,
             &.next,
             &.disabled {
-              color: #dedede;
+              color: #7699C3;
 
               &:hover {
-                color: #c5c5c5;
+                color: #7699C3;
               }
             }
 
@@ -127,33 +154,40 @@
             }
 
             &.now {
-              color: #5cc4ef;
-              font-weight: 400;
+             > span{
+                 border-color: #a5c8ec9e;
+             }
             }
 
             &.selected {
-              background-color: #5cc4ef;
-              color: #fff;
-              font-weight: 400;
+              // background-color: #5cc4ef;
+              // color: #fff;
+              // font-weight: 400;
 
-              &:hover {
-                background-color: darken(#5cc4ef, 2%);
-                color: #fff;
+              > span{
+                 border-color: #3B89EF;
+                 background-color: #3B89EF;
+                 color: white;
               }
 
-              &.start {
-                border-top-right-radius: 0;
-                border-bottom-right-radius: 0;
-              }
+              // &:hover {
+              //   background-color: darken(#5cc4ef, 2%);
+              //   color: #fff;
+              // }
 
-              &.end {
-                border-top-left-radius: 0;
-                border-bottom-left-radius: 0;
-              }
+              // &.start {
+              //   border-top-right-radius: 0;
+              //   border-bottom-right-radius: 0;
+              // }
 
-              &.start.end {
-                border-radius: 4px;
-              }
+              // &.end {
+              //   border-top-left-radius: 0;
+              //   border-bottom-left-radius: 0;
+              // }
+
+              // &.start.end {
+              //   border-radius: 4px;
+              // }
             }
 
             &.between {
@@ -165,6 +199,15 @@
       }
     }
 
+    .direction-arrow{
+      font-size: 20px;
+      color: #7699C3;
+
+       &:hover {
+          color: #1B559B;
+        }
+    }
+
     .calendar-days table tbody tr td {
       width: 100% / 7;
     }
@@ -172,11 +215,25 @@
     .calendar-months table tbody tr td {
       width: 100% / 3;
       height: 40px;
+
+      &:hover{
+        font-weight: bold;
+      }
+    }
+    .calendar-months table tbody{
+      margin-top: 40px;
     }
 
     .calendar-years table tbody tr td {
       width: 100% / 4;
       height: 60px;
+      &:hover{
+        font-weight: bold;
+      }
+    }
+
+     .calendar-years table tbody{
+      margin-top: 30px;
     }
 
   }

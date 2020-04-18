@@ -1,5 +1,5 @@
 import path from 'path';
-import {argv} from 'yargs';
+import { argv } from 'yargs';
 
 
 const env = argv.env;
@@ -37,11 +37,15 @@ const config = {
           'css-loader',
           'less-loader'
         ]
-      }
+      },
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i,
+        loader: 'file-loader?name=/public/icons/[name].[ext]'
+      },
     ]
   },
   resolve: {
-    extensions: ['.js', '.jsx', '.json']
+    extensions: ['.js', '.jsx', '.json', '.svg']
   }
 };
 

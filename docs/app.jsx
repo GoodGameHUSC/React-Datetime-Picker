@@ -1,8 +1,8 @@
-import React, {Component} from 'react';
-import {render} from 'react-dom';
+import React, { Component } from 'react';
+import { render } from 'react-dom';
 import moment from 'moment';
 
-import {DatetimePicker, DatetimePickerTrigger} from '../dist/rc-datetime-picker';
+import { DatetimePicker, DatetimePickerTrigger } from '../dist/rc-datetime-picker';
 import './app.less';
 
 
@@ -10,25 +10,28 @@ class InlinePicker extends Component {
   constructor() {
     super();
     this.state = {
-      moment: moment()
+      time: moment()
     };
   }
 
-  handleChange = (moment) => {
+  handleChange = (time) => {
     this.setState({
-      moment
+      time
     });
   }
 
   render() {
-    const {moment} = this.state;
+    const { time } = this.state;
 
     return (
       <div>
-        <span className="text">Datetime: {moment.format('YYYY/MM/DD HH:mm')}</span>
+        <span className="text">Datetime: {time.format('YYYY/MM/DD HH:mm')}</span>
         <DatetimePicker
-          moment={moment}
+          moment={time}
           onChange={this.handleChange}
+          minDate={moment().add(1, 'days')}
+          closeOnSelectDay={true}
+          showTimePicker={false}
         />
       </div>
     );
@@ -55,14 +58,14 @@ class PopupPicker extends Component {
       'Yesterday': moment().subtract(1, 'days'),
       'Clear': ''
     };
-    const {datetime} = this.state;
+    const { datetime } = this.state;
     const value = datetime ? datetime.format('YYYY/MM/DD HH:mm') : '';
-    
+
     return (
-      <DatetimePickerTrigger 
-        shortcuts={shortcuts} 
-        moment={datetime} 
-        onChange={this.handleChange} 
+      <DatetimePickerTrigger
+        shortcuts={shortcuts}
+        moment={datetime}
+        onChange={this.handleChange}
       >
         <input type="text" value={value} readOnly />
         <span className="fa fa-calendar-o"></span>

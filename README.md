@@ -1,6 +1,6 @@
 # Rc-Datetime-Picker
 
-Rc-Datetime-Picker is a react component for datetime picker by [Moment.js].
+React Date Time Picker is a react component for datetime picker by [Moment.js].
 
 ## Requirements
 
