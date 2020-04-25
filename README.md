@@ -1,4 +1,4 @@
-# Rc-Datetime-Picker
+# React Date Time Picker
 
 React Date Time Picker is a react component for datetime picker by [Moment.js].
 
@@ -8,12 +8,17 @@ React Date Time Picker is a react component for datetime picker by [Moment.js].
 - [Moment.js]
 - Modern browsers (IE>=9 is required)
 
+## Inspiration
+
+- Module was strongly get inspiration from [rc-datetime-picker](https://github.com/AllenWooooo/rc-datetime-picker)
+- Also customize UI and module to get better experience 
+
 ## Installation
 
 ### Install with NPM
 
 ```
-$ npm install rc-datetime-picker
+$ npm install rc-datetime-picker --save
 ```
 
 ### Manual download
@@ -108,19 +113,19 @@ See the [demo] page.
     <tr>
       <td>weeks</td>
       <td>Array</td>
-      <td>['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat']</td>
+      <td>['S', 'M', 'T', 'W', 'T', 'F', 'S']</td>
       <td>Text for weekdays.</td>
     </tr>
     <tr>
       <td>months</td>
       <td>Array</td>
-      <td>[Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']</td>
+      <td>['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']</td>
       <td>Text for months.</td>
     </tr>
     <tr>
       <td>dayFormat</td>
       <td>String</td>
-      <td>'MMMM, YYYY'</td>
+      <td>'MMMM YYYY'</td>
       <td>Formatting current date of the day panel.</td>
     </tr>
     <tr>

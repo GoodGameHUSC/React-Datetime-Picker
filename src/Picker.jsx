@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import classNames from 'classnames/bind';
 import blacklist from 'blacklist';
 
@@ -23,22 +23,22 @@ class Picker extends Component {
 
   render() {
     const {
-      isOpen = true, 
-      shortcuts, 
-      splitPanel, 
-      showTimePicker = true, 
+      isOpen = true,
+      shortcuts,
+      splitPanel,
+      showTimePicker = true,
       showCalendarPicker = true
     } = this.props;
-    const {panel} = this.state;
+    const { panel } = this.state;
     const isTimePanel = panel === 'time';
     const isCalendarPanel = panel === 'calendar';
     const className = classNames('datetime-picker', this.props.className, {
       split: splitPanel
     });
-    const props = blacklist(this.props, 'className', 'splitPanel', 'isOpen');    
+    const props = blacklist(this.props, 'className', 'splitPanel', 'isOpen');
 
     return (
-      <div className={className} style={{display: isOpen ? 'block' : 'none'}} onClick={(evt) => evt.stopPropagation()}>
+      <div className={className} style={{ display: isOpen ? 'block' : 'none' }} onClick={(evt) => evt.stopPropagation()}>
         {shortcuts
           ? <Shortcuts {...props} />
           : undefined
@@ -55,14 +55,14 @@ class Picker extends Component {
           </div>
           : undefined
         }
-        
+
         {showCalendarPicker
-          ? <Calendar {...props} isOpen={isOpen} style={{display: isCalendarPanel || !splitPanel ? 'block' : 'none'}} />
+          ? <Calendar {...props} isOpen={isOpen} style={{ display: isCalendarPanel || !splitPanel ? 'block' : 'none' }} />
           : undefined
         }
 
         {showTimePicker
-          ? <Time {...props} style={{display: isTimePanel || !splitPanel ? 'block' : 'none'}} />
+          ? <Time {...props} style={{ display: isTimePanel || !splitPanel ? 'block' : 'none' }} />
           : undefined
         }
       </div>

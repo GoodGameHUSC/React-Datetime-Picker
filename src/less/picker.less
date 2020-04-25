@@ -13,7 +13,8 @@
     z-index: 100;
     box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
     border-radius: 10px;
-    height: 320px;
+    height: auto;
+    padding-bottom: 10px;
 
   .calendar {
 
@@ -241,6 +242,7 @@
   .time {
     border-top: 1px solid #efefef;
     padding: 4px;
+    padding-top: 10px;
     display: flex;
     align-items: center;
     position: relative;
@@ -310,8 +312,9 @@
   }
 
   .shortcuts-bar {
+    
     border-bottom: 1px solid #efefef;
-    padding: 8px;
+    padding: 8px 18px;
 
     .btn {
       border: 0;
@@ -320,6 +323,8 @@
       border-radius: 2px;
       padding: 2px 4px;
       outline: none;
+      font-size: 12px;
+      color: #1B559B;
 
       &:hover {
         background-color: #f0f0f0;
@@ -371,8 +376,8 @@
     content: "";
     position: absolute;
     background: #fff;
-    border-top: 1px solid #dbdbdb;
-    border-right: 1px solid #dbdbdb;
+    // border-top: 1px solid #dbdbdb;
+    // border-right: 1px solid #dbdbdb;
     width: 10px;
     height: 10px;
     z-index: -1;

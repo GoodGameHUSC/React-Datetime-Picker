@@ -1,6 +1,6 @@
 {
-  "name": "react-date-time-picker",
-  "version": "1.0.0",
+  "name": "react-date-time-ui",
+  "version": "1.0.1",
   "description": "React date time picker by momentjs",
   "main": "dist/rc-datetime-picker.cjs.js",
   "keywords": [
@@ -20,14 +20,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/AllenWooooo/rc-datetime-picker.git"
+    "url": "git+https://github.com/GoodGameHUSC/rc-datetime-picker"
   },
   "author": "Hung Pham",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/AllenWooooo/rc-datetime-picker/issues"
+    "url": "https://github.com/GoodGameHUSC/rc-datetime-picker/issues"
   },
-  "homepage": "https://github.com/AllenWooooo/rc-datetime-picker#readme",
+  "homepage": "https://github.com/GoodGameHUSC/rc-datetime-picker#readme",
   "dependencies": {
     "blacklist": "^1.1.4",
     "classnames": "^2.2.5",
